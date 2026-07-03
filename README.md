@@ -1,6 +1,6 @@
 # Risk-Based Quality Engineering in Practice
 
-This project follows the [Practice Software Testing] website as it develops across multiple sprint versions.
+This project follows the **Practice Software Testing** application as it evolves across multiple sprint versions.
 
 Rather than treating each version as an unrelated website, the project approaches it as one product evolving over time. Each new sprint introduces additional functionality, new customer journeys and new opportunities for previously working behaviour to be affected.
 
