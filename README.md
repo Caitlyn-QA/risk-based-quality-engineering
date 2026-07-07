@@ -1,16 +1,16 @@
 # Risk-Based Quality Engineering in Practice
 
-This project follows the **Practice Software Testing** application as it evolves across multiple sprint versions.
+This project follows the Practice Software Testing application as it evolves across multiple sprint versions.
 
-Rather than treating each version as an unrelated website, the project approaches it as one product evolving over time. Each new sprint introduces additional functionality, new customer journeys and new opportunities for previously working behaviour to be affected.
+Rather than treating each version as an unrelated website, the project approaches it as one product evolving over time. Each sprint introduces new functionality, expands existing customer journeys, and creates new opportunities for previously working behaviour to be affected.
 
-The purpose of the project is to develop practical skill in risk-based quality engineering: understanding what could go wrong, why it matters to the customer and the business, and what evidence is needed before the product can be trusted.
+The purpose of this project is to demonstrate how a QA engineer approaches software quality throughout an entire sprint. Rather than focusing only on writing automated tests, the project shows how requirements are analysed, products are explored, automation decisions are made, and evidence is gathered to support confidence in the product.
 
-The project combines exploratory testing, risk analysis and Playwright automation, with an emphasis on making thoughtful testing decisions rather than simply producing a large number of tests.
+The project combines requirements analysis, exploratory testing, risk analysis, Playwright automation, and continuous review, with an emphasis on making thoughtful engineering decisions rather than simply producing a large number of automated tests.
 
 ## Why This Project Exists
 
-Software testing is not only about checking whether individual buttons, fields or pages work.
+Software testing is not only about checking whether individual buttons, fields, or pages work.
 
 A quality engineer must also understand:
 
@@ -24,9 +24,28 @@ A quality engineer must also understand:
 
 As the website develops from one sprint to the next, the testing approach must evolve with it.
 
-For example, an early sprint may introduce product navigation. A later sprint may add searching and filtering. Testing the later version therefore includes not only checking the new functionality, but also considering whether the changes have affected the original product journey.
+For example, an early sprint may introduce product navigation. A later sprint may add searching and filtering. Testing the later version therefore includes not only checking the new functionality, but also considering whether the changes have affected the original customer journey.
 
-This project demonstrates how quality decisions change as software becomes more complex.
+This project demonstrates how quality engineering decisions evolve as software becomes more complex.
+
+## QA Workflow
+
+Each user story follows the same engineering workflow:
+
+- Understand the requirements.
+- Explore the implemented behaviour.
+- Decide whether automation is justified.
+- Design automated test scenarios.
+- Implement Playwright tests where appropriate.
+- Review and refactor the solution.
+
+Each stage builds upon the previous one.
+
+Understanding the requirements influences exploratory testing. Exploration influences automation decisions. Automation decisions determine which test scenarios are created. The implemented tests are then reviewed and refined based on experience gained during development.
+
+Not every user story results in automated tests.
+
+Sometimes the most valuable engineering decision is to defer automation because the implementation is temporary, unstable, or expected to change significantly in the near future.
 
 ## Risk-Based Testing
 
@@ -34,31 +53,31 @@ Not every possible failure carries the same level of risk.
 
 A minor visual inconsistency and an incorrect product price are both defects, but their consequences are very different.
 
-For each feature, the project considers:
+For each user story, the project considers:
 
 - what could fail;
 - who would be affected;
 - what the consequence could be;
 - how likely the failure may be;
-- which risks should receive the most testing attention.
+- which risks deserve the greatest testing effort.
 
 This helps prioritise testing around customer impact and business value rather than treating every possible scenario as equally important.
 
 ## Requirements and Business Understanding
 
-Before testing a feature, the first question is:
+Before testing a user story, the first question is:
 
-> Why does this feature exist?
+Why does this functionality exist?
 
 For example, a search feature does not exist merely so that a customer can enter text into an input field. Its purpose is to help customers find relevant products efficiently and continue towards a purchase.
 
 Testing should therefore protect the real customer and business outcome, not only confirm that the interface responds.
 
-The project also examines gaps and ambiguity in requirements.
+The project also examines ambiguity and gaps in the requirements.
 
 A requirement such as:
 
-> The customer can search for products.
+The customer can search for products.
 
 does not explain:
 
@@ -69,23 +88,27 @@ does not explain:
 - whether active filters remain applied;
 - how matching results should be ordered.
 
-Identifying questions like these is an important part of quality engineering because unclear expectations can lead to inconsistent implementation, incorrect assumptions and missed defects.
+Questions like these are documented during requirements analysis as assumptions or clarification requests before exploratory testing begins.
+
+Identifying missing information is an important part of quality engineering because unclear expectations can lead to inconsistent implementation, incorrect assumptions, and missed defects.
 
 ## Exploratory Testing
 
-Exploratory testing is used to understand each new feature before deciding what should be automated.
+Exploratory testing is used to understand how the current implementation behaves before automation decisions are made.
 
 Testing is guided by focused charters and important risks, but it can adapt as new information is discovered.
 
 During exploration, the project may:
 
-- observe the normal customer journey;
-- investigate boundaries and unusual inputs;
-- combine features and state changes;
-- interrupt or repeat actions;
-- follow unexpected results;
-- identify new questions and risks;
-- gather evidence for automation decisions.
+observe the normal customer journey;
+investigate boundaries and unusual inputs;
+combine features and state changes;
+interrupt or repeat actions;
+follow unexpected behaviour;
+identify new questions and risks;
+gather evidence for automation decisions.
+
+Exploration also helps determine whether the implementation is mature enough to justify automation.
 
 Exploratory testing is treated as structured investigation rather than random clicking.
 
@@ -97,21 +120,25 @@ Automation decisions consider:
 
 - business importance;
 - regression risk;
-- repeatability;
 - feature stability;
 - maintenance cost;
-- whether human judgment is required;
-- whether UI automation is the most suitable testing level.
+- repeatability;
+- whether human judgement is required;
+- whether UI automation is the most appropriate testing level.
+
+Sometimes the correct engineering decision is to defer automation.
+
+Features that are temporary, incomplete, or expected to change significantly may provide little long-term value as automated regression tests.
 
 A major goal of the project is not only to write Playwright tests, but to decide whether a test should exist and what value it would provide.
 
 For every important automated test, the project asks:
 
-> Which risk does this test protect against?
+- Which risk does this test protect against?
 
-and:
+and
 
-> What does this test actually prove?
+- What does this test actually prove?
 
 ## Reliable Playwright Evidence
 
@@ -126,6 +153,7 @@ This includes paying attention to:
 - test independence;
 - application and browser state;
 - controlled test data;
+- API-assisted test data where appropriate;
 - clear failure messages;
 - false-positive risks;
 - maintainable test structure.
@@ -144,37 +172,9 @@ The cause may come from:
 - the environment;
 - an unclear or incorrect requirement.
 
-Failures are investigated by reviewing the failed expectation, inspecting Playwright traces, reproducing the behaviour manually and comparing the result with the intended requirement.
+Failures are investigated by reviewing the failed expectation, inspecting Playwright traces, reproducing the behaviour manually, and comparing the result with the intended requirement.
 
 The goal is to understand why the failure occurred rather than changing the test until it becomes green.
-
-## Working with AI
-
-AI is used throughout the project as a working partner.
-
-It may assist with:
-
-- identifying possible risks;
-- suggesting exploratory scenarios;
-- creating an initial Playwright implementation;
-- explaining unfamiliar code;
-- proposing debugging approaches;
-- simplifying automation;
-- reviewing documentation and reasoning.
-
-AI-generated suggestions are treated as proposals rather than final answers.
-
-They are reviewed by asking:
-
-- Did AI understand the actual requirement?
-- Did it assume or invent product behaviour?
-- Does the suggested test protect an important risk?
-- Are the assertions strong enough?
-- Could the test pass while the product is incorrect?
-- Is the solution unnecessarily complicated?
-- Can the final code be understood and explained independently?
-
-The goal is to use AI confidently and efficiently while maintaining the knowledge and judgment required to evaluate and improve its work.
 
 ## Communicating Quality
 
@@ -185,11 +185,12 @@ At the end of each sprint, the project records:
 - what was investigated;
 - what evidence was gathered;
 - which risks are protected by automation;
+- which automation was intentionally deferred;
 - which defects were identified;
 - what was not tested;
 - what remains uncertain;
-- how much confidence the available evidence supports.
+- how much confidence the available evidence provides.
 
 A quality engineer does not simply report that the tests passed.
 
-The responsibility is to help the team understand what can reasonably be trusted and what risk still remains.
+The responsibility is to help the team understand what can reasonably be trusted, what evidence supports that confidence, and what risks still remain before release.
