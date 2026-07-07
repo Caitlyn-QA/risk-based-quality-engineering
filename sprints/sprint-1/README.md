@@ -1,19 +1,83 @@
-# Sprint 1
+# Sprint 1 — Product Discovery and Enquiry
 
-Sprint 1 introduces the first customer-facing version of the product catalogue.
+## Overview
 
-During this sprint, the quality engineering work follows the product from planning through investigation, test design, automation decisions, defect reporting and sprint review.
+Sprint 1 introduces the first customer-facing product discovery flow.
 
-## How to Read This Sprint
+The sprint focuses on helping visitors browse the product catalog, view product information, browse by category, and send an enquiry through the contact form.
 
-Start with `01-planning`, then follow the numbered folders in order.
+This README acts as the sprint briefing. It explains what is being built, why it matters, and how QA will approach the work.
 
-Each folder represents one stage of the sprint.
+---
 
-1. **Planning** – understand the business goals and identify product risks.
-2. **Exploratory Investigation** – investigate the application to understand its behaviour.
-3. **Test Design** – decide what should be verified based on the investigation.
-4. **Automation** – document the automated regression coverage and the reasoning behind it.
-5. **Defects** – record confirmed issues discovered during the sprint.
-6. **Sprint Review** – summarise what was delivered and what the team learned.
+## Sprint Goal
 
+Deliver a reliable first version of the product discovery and enquiry experience.
+
+By the end of this sprint, visitors should be able to:
+
+- browse available products
+- view product details
+- browse products by category
+- submit an enquiry through the contact form
+
+---
+
+## Sprint Scope
+
+Sprint 1 includes the customer-facing browsing and enquiry journey.
+
+Included in scope:
+
+- Product overview
+- Product detail page
+- Category browsing
+- Contact form
+
+Out of scope for this sprint:
+
+- User login
+- Shopping cart
+- Checkout
+- Payment
+- Order management
+
+---
+
+## User Stories
+
+Sprint 1 contains four user stories:
+
+1. Product Overview
+2. Product Detail
+3. Category Browsing
+4. Contact Form
+
+Each user story follows the same QA workflow:
+
+1. Planning and requirements understanding
+2. Exploratory investigation
+3. Test design and automation decision
+4. Playwright implementation
+5. Defect documentation, if needed
+6. Sprint review and refactor
+
+---
+
+## High-Level Business Value
+
+This sprint creates the foundation for customers to discover products and contact the business.
+
+The product browsing journey helps visitors find items of interest, while the contact form gives them a way to ask questions or request support.
+
+Together, these user stories support the first basic customer journey before more advanced functionality, such as checkout or accounts, is added.
+
+---
+
+## Initial QA Thoughts
+
+At this stage, QA is not focused on writing automated tests immediately.
+
+The first priority is to understand the requirements, explore the product behaviour, and identify which areas provide the most value for future regression testing.
+
+Automation decisions will be made after the user stories are understood and explored.
