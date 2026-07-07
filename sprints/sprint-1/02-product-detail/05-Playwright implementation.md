@@ -2,73 +2,44 @@
 
 ## Purpose
 
-Document the Sprint 1 Playwright implementation approach for the Product Detail user story.
+Document the Sprint 1 Playwright implementation decision for the Product Detail user story.
 
 ---
 
-## Automation Decision Summary
+## Automation Decision
 
-**Implemented**
-
-- AC2 – Product information shown
-- AC3 – Related products
-
-**Deferred**
-
-- AC1 – Product detail page is displayed from the Product Overview
-
-AC1 is deferred because it depends on the temporary list-based Product Overview implementation, which will be replaced by the planned card-based layout in a future sprint.
+Product Detail automation is deferred in Sprint 1.
 
 ---
 
-## Implementation Approach
+## Implementation Status
 
-Product Detail tests should open a known Product Detail page directly instead of navigating through the Product Overview.
-
-This avoids coupling the tests to the temporary Product Overview UI.
+No Playwright tests will be implemented for the Product Detail user story during Sprint 1.
 
 ---
 
-## Implemented Scenarios
+## Rationale
 
-### Scenario 1 – Product Detail displays required product information
+The expected customer journey begins by selecting a product from the Product Overview or Category Browsing pages.
 
-The test verifies that the Product Detail page displays:
+These entry points are currently based on temporary implementations that are expected to change as the product evolves.
 
-- product image
-- product name
-- product description
-- product price
-- category badge
-- brand badge
+Creating Playwright tests at this stage would either:
 
----
+- depend on a temporary UI that will require significant maintenance, or
+- bypass the intended user journey by navigating directly to a Product Detail page.
 
-### Scenario 2 – Related products behaviour
-
-Related products appear to be based on the same child category.
-
-The API can be used to identify suitable test data before running the UI test.
-
-The test data should include:
-
-- a product from a child category that contains other products
-- a product from a child category that contains no other products
-
-This avoids relying only on hard-coded examples.
+Neither approach provides sufficient long-term regression value.
 
 ---
 
-### Scenario 3 – Selecting a related product opens its Product Detail page
+## Future Implementation Considerations
 
-The test verifies that selecting a related product card navigates to the corresponding Product Detail page.
+When the product browsing journey is stable, Product Detail automation should be implemented to verify:
 
----
+- navigation from Product Overview to Product Detail
+- display of product image, name, description, price, category, and brand
+- display of related products when applicable
+- navigation between related products
 
-## Technical Notes
-
-- Use Playwright `request` to retrieve product data from the API.
-- Use the API response to identify suitable products for related-product scenarios.
-- Use direct navigation to the Product Detail URL.
-- Avoid using Product Overview locators in these tests.
-- Keep assertions focused on Product Detail behaviour.
+API-assisted test data selection should be considered to avoid relying on hard-coded product data and to improve test reliability.

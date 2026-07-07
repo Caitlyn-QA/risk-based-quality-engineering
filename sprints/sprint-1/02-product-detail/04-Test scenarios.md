@@ -2,84 +2,46 @@
 
 ## Purpose
 
-Define the automated test scenarios for the Product Detail user story based on the Sprint 1 automation strategy.
+Record the Sprint 1 test scenario decision for the Product Detail user story.
 
 ---
 
 ## Automation Decision Summary
 
-**Automate**
-
-- AC2 – Product information shown
-- AC3 – Related products
-
 **Defer**
 
 - AC1 – Product detail page is displayed
+- AC2 – Product information shown
+- AC3 – Related products
 
 ---
 
-## Automated Test Scenarios
+## Scenario Decision
 
-### Scenario 1 – Product Detail displays required product information
-
-**Covers:** AC2
-
-**Given** the user opens a known Product Detail page
-
-**Then** the following information is displayed:
-
-- product image
-- product name
-- product description
-- product price
-- category badge
-- brand badge
+No automated test scenarios will be created for the Product Detail user story in Sprint 1.
 
 ---
 
-### Scenario 2 – Related products are displayed when the child category contains other products
+## Rationale
 
-**Given** the user opens a Product Detail page for a product whose child category contains other products  
-**Then** related products from the same child category are displayed.
+The Product Detail page is accessed through the Product Overview or Category Browsing user stories.
 
----
+Both entry points are expected to change as the product browsing experience evolves from the temporary list-based implementation to the planned card-based interface.
 
-### Scenario 3 – Related products are not displayed when the child category contains no other products
+Creating automated UI scenarios at this stage would either:
 
-**Given** the user opens a Product Detail page for a product whose child category contains no other products  
-**Then** no related product cards are displayed.
+- depend on a temporary implementation that is expected to change, or
+- rely on direct URL navigation that does not represent the intended user journey.
 
----
-
-### Scenario 4 – Selecting a related product opens its Product Detail page
-
-**Given** the user opens a Product Detail page with related products  
-**When** the user selects a related product card  
-**Then** the corresponding Product Detail page is displayed.
----
-
-## Deferred Scenario
-
-### Scenario – Product Detail page can be opened from the Product Overview
-
-**Covers:** AC1
-
-This scenario is deferred because accessing the Product Detail page through the Product Overview depends on the temporary list-based implementation.
-
-The scenario should be revisited when the Product Overview reaches its planned card-based implementation.
+Automation should therefore be deferred until the product browsing journey is stable.
 
 ---
 
-## Test Data
+## Future Automation Candidates
 
-Related products appear to be based on the same child category.
+Once the Product Overview and Category Browsing implementations are stable, consider automating:
 
-For AC3 automation, test data should include:
-
-- a product from a child category that contains other products
-- a product from a child category that contains no other products
-
-The API can be used to identify suitable products before running the UI test.
-
-This avoids relying on hard-coded product examples and makes the test data selection more reliable.
+- navigating from Product Overview to Product Detail
+- verifying the Product Detail page displays the required product information
+- displaying related products when applicable
+- navigating to another Product Detail page through a related product
