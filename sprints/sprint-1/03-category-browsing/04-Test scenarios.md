@@ -20,24 +20,15 @@ Define the automated test scenarios for the Browse Products by Category user sto
 
 ### Scenario 1 – Category page opens from category navigation
 
-**Covers:** AC1
+**Covers:** AC1 & AC2
 
 **Given** the user is on the home page  
 **When** the user selects a category name  
-**Then** the corresponding category page is displayed.
-
+**Then** the corresponding category page is displayed
+**And** the selected category name is shown as the page title.
 ---
 
-### Scenario 2 – Category page displays the selected category title
-
-**Covers:** AC2
-
-**Given** the user opens a category page  
-**Then** the selected category name is shown as the page title.
-
----
-
-### Scenario 3 – Category page displays only products from the selected category
+### Scenario 2 – Category page displays only products from the selected category
 
 **Covers:** AC3
 

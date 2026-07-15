@@ -1,42 +1,51 @@
-# Browse Products by Category Playwright Implementation
+# Browse Products by Category – Playwright Implementation
 
-## Purpose
+## Objective
 
-Document the Sprint 1 Playwright implementation approach for the Browse Products by Category user story.
+Describe the planned Playwright implementation before writing the automation code.
 
----
-
-## Automation Decision Summary
-
-**Implemented**
-
-- AC1 – Category page is displayed
-- AC2 – Category title
-- AC3 – Products from selected category
+The goal is to make implementation decisions explicit, keep the automation maintainable, and separate design thinking from the code itself.
 
 ---
 
-## Implementation Approach
+## Test Structure
 
-Automate the Category Browsing user story through the visible user journey.
+The automated test follows a simple Arrange → Act → Assert structure.
 
-The test should start from the home page, select a category from the navigation bar, and verify that the correct category page is displayed.
+### Arrange
+
+- Open the home page.
+- Ensure the category navigation is visible.
+
+### Act
+
+- Select a category from the navigation menu.
+
+### Assert
+
+- Verify the category page heading.
+- Verify that product results are displayed.
+- Verify that the displayed products belong to the selected category.
 
 ---
 
-## Implemented Scenarios
+## Page Object Responsibilities
 
-### Scenario 1 – Category page opens from category navigation
+### HomePage
 
-The test selects a category name from the navigation bar and verifies that the category page opens.
+Responsible for:
 
-### Scenario 2 – Category page displays the selected category title
+- opening the application
+- navigating to a category
 
-The test verifies that the selected category name is displayed as the page title.
+### CategoryPage
 
-### Scenario 3 – Category page displays only products from the selected category
+Responsible for:
 
-The test verifies that the products displayed on the category page belong to the selected category.
+- returning the category heading
+- returning the displayed product names
+
+The page objects should encapsulate navigation and page interaction details so future UI changes require minimal updates to the tests.
 
 ---
 
@@ -44,17 +53,59 @@ The test verifies that the products displayed on the category page belong to the
 
 Use a known category available in the Sprint 1 navigation.
 
-The API may be used to confirm which products belong to the selected category before validating the UI.
+The API may be used to determine which products belong to the selected category before validating the UI.
 
-This helps avoid relying only on visual inspection or hard-coded assumptions.
+Using API data avoids relying on hard-coded product names and provides an independent source of expected results.
 
 ---
 
-## Technical Notes
+## Locator Strategy
 
-- Start from the home page.
-- Select the category using a visible category navigation link.
-- Verify the category page heading.
-- Verify that product results are displayed.
-- Use API data where useful to confirm category-product relationships.
-- Keep category navigation logic reusable in case the navigation structure changes in a future sprint.
+Prefer user-facing locators whenever possible.
+
+Examples include:
+
+- category navigation links
+- category heading
+- product names
+
+Avoid implementation-specific selectors unless no stable user-facing locator exists.
+
+---
+
+## Assertions
+
+The automation verifies the business behaviour rather than the visual layout.
+
+Assertions include:
+
+- the correct category heading is displayed
+- products are displayed for the selected category
+- displayed products belong to the selected category
+
+The automation does not verify visual styling or page layout.
+
+---
+
+## Design Decisions
+
+The following implementation decisions have been made:
+
+- Category navigation remains encapsulated within the HomePage page object.
+- Expected product data is obtained from the API when appropriate.
+- Assertions focus on business behaviour rather than implementation details.
+- Navigation logic should remain reusable because the Sprint 2 navigation structure changes.
+
+---
+
+## Maintainability
+
+The implementation should be written so that future UI changes require minimal updates.
+
+Potential future changes include:
+
+- category navigation moving under a dedicated "Categories" menu
+- additional product information being displayed
+- new category structures
+
+Encapsulating navigation within the page object helps isolate these future changes from the test scenarios.
