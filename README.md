@@ -27,7 +27,7 @@ The Playwright tests are therefore the outcome of the testing process rather tha
 
 A separate guide explains what I created, in which order, and why I chose this structure:
 
-📖 [Building Sprint 1 – My Workflow and the Reasoning Behind It](building-sprint-1.md)
+📖 [Building Sprint 1 – My Workflow and the Reasoning Behind It](how-i-built-sprint-1.md)
 
 ## Why This Project Exists
 
