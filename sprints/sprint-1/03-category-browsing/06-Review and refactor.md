@@ -2,36 +2,53 @@
 
 ## Status
 
-In progress.
+Completed.
 
-The first automated test has been implemented and is passing. It covers:
+Both implemented scenarios are passing.
 
-- opening the selected category page from the home page navigation
-- confirming that the selected category name is displayed as the page heading
+## Current implementation
 
-The remaining scenario, which verifies that only products belonging to the selected category are displayed, is still to be implemented.
+The implementation:
 
-## Current Implementation
+- retrieves category data dynamically from the API
+- avoids hardcoded categories and products
+- uses accessible locators for category navigation
+- retrieves the expected product list directly from the API
+- compares the displayed products with the API response using product IDs
+- validates both product count and product identity
 
-The existing test:
+## Review observations
 
-- retrieves the category tree through the API
-- selects a root category that contains subcategories
-- locates the matching category link using its accessible name
-- reads the link destination before clicking
-- verifies navigation to the expected category URL
-- verifies that the selected category name is displayed as the page heading
+### Dynamic test data
 
-## Review Observations
+The implementation retrieves categories and expected products from the API instead of relying on hardcoded values. This improves long-term maintainability and reduces the likelihood of brittle tests.
 
-The test avoids hardcoding a specific category and instead retrieves valid test data from the API.
+### Multiple sources of evidence
 
-The category link is located using `getByRole`, which reflects how a user identifies the element.
+The test combines API responses with UI validation.
 
-The expected URL is based on the link's actual `href` value rather than duplicating the route structure inside the test.
+The API provides the expected product set, while the UI provides the actual product links displayed to the user. Comparing both increases confidence that the application behaves correctly.
 
-The URL and heading assertions remain in the same test because they provide two pieces of evidence for one coherent behaviour: the correct category page has opened.
+### Stable identifiers
 
-No refactoring is required at this stage.
+Products are compared using their IDs extracted from the product links rather than their displayed names.
 
-A final review will be completed after the remaining product-filtering scenario has been implemented.
+Using IDs avoids issues caused by duplicate or changing product names.
+
+### Locator strategy
+
+The product locator intentionally targets anchor elements whose `data-test` and `href` attributes identify product links.
+
+This reduces the chance of matching unrelated elements.
+
+## Refactoring opportunities
+
+Both scenarios perform similar setup steps:
+
+- retrieving category data
+- selecting a category
+- navigating to the category page
+
+No helper methods have been introduced at this stage.
+
+The implementation currently prioritises readability. Common setup can be reviewed for extraction once additional category browsing scenarios have been implemented.
