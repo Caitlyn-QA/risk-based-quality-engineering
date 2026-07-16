@@ -9,6 +9,26 @@ The purpose of this project is to demonstrate how a QA engineer approaches softw
 
 The project combines requirements analysis, exploratory testing, risk analysis, Playwright automation, and continuous review, with an emphasis on making thoughtful engineering decisions rather than simply producing a large number of automated tests.
 
+## How I Built Sprint 1
+
+For Sprint 1, I organised the repository by feature so that each feature could show its complete journey in one place.
+
+Each feature moves through the same sequence:
+
+- understand the requirements;
+- explore the product;
+- design the automation strategy;
+- define the test scenarios;
+- implement the Playwright tests;
+- review and refine the solution;
+- publish the completed work.
+
+The Playwright tests are therefore the outcome of the testing process rather than its starting point.
+
+A separate guide explains what I created, in which order, and why I chose this structure:
+
+📖 [Building Sprint 1 – My Workflow and the Reasoning Behind It](building-sprint-1.md)
+
 ## Why This Project Exists
 
 Software testing is not only about checking whether individual buttons, fields, or pages work.
@@ -31,7 +51,7 @@ This project demonstrates how quality engineering decisions evolve as software b
 
 ## QA Workflow
 
-Each user story follows the same engineering workflow:
+For this project, I chose to take each user story through the same engineering workflow:
 
 - Understand the requirements.
 - Explore the implemented behaviour.
@@ -40,7 +60,7 @@ Each user story follows the same engineering workflow:
 - Implement Playwright tests where appropriate.
 - Review and refactor the solution.
 
-Each stage builds upon the previous one.
+I designed the stages to build upon one another.
 
 Understanding the requirements influences exploratory testing. Exploration influences automation decisions. Automation decisions determine which test scenarios are created. The implemented tests are then reviewed and refined based on experience gained during development.
 
@@ -101,13 +121,13 @@ Testing is guided by focused charters and important risks, but it can adapt as n
 
 During exploration, the project may:
 
-observe the normal customer journey;
-investigate boundaries and unusual inputs;
-combine features and state changes;
-interrupt or repeat actions;
-follow unexpected behaviour;
-identify new questions and risks;
-gather evidence for automation decisions.
+- observe the normal customer journey;
+- investigate boundaries and unusual inputs;
+- combine features and state changes;
+- interrupt or repeat actions;
+- follow unexpected behaviour;
+- identify new questions and risks;
+- gather evidence for automation decisions.
 
 Exploration also helps determine whether the implementation is mature enough to justify automation.
 
