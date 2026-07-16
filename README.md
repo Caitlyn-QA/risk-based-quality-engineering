@@ -1,4 +1,5 @@
 # Risk-Based Quality Engineering in Practice
+[![Playwright Tests - V1](https://github.com/Caitlyn-QA/risk-based-quality-engineering/actions/workflows/playwright-v1.yml/badge.svg?branch=main)](https://github.com/Caitlyn-QA/risk-based-quality-engineering/actions/workflows/playwright-v1.yml)
 
 This project follows the Practice Software Testing application as it evolves across multiple sprint versions.
 
